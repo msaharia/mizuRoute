@@ -1,5 +1,5 @@
 module dataTypes
-USE nrtype, only: i4b,dp,lgt
+USE nrtype, only: i8b,i4b,dp,lgt
 USE nrtype, only: realMissing
 USE nrtype, only: integerMissing
 USE nrtype, only: strLen   ! string length
@@ -92,8 +92,8 @@ implicit none
  ! data to remap runoff hru to river network hrus
  type, public :: remap
    ! information in the mapping file
-   integer(i4b)             , allocatable  :: hru_id(:)    ! Id of hrus associated with river network (="hru")
-   integer(i4b)             , allocatable  :: qhru_id(:)   ! Id of hrus associated with runoff simulation (="qhru")
+   integer(i8b)             , allocatable  :: hru_id(:)    ! Id of hrus associated with river network (="hru")
+   integer(i8b)             , allocatable  :: qhru_id(:)   ! Id of hrus associated with runoff simulation (="qhru")
    integer(i4b)             , allocatable  :: num_qhru(:)  ! number of "qhru" within "hru"
    integer(i4b)             , allocatable  :: i_index(:)   ! Index in the y dimension of the runoff grid (starting with 1,1 in LL corner)
    integer(i4b)             , allocatable  :: j_index(:)   ! Index in the x dimension of the runoff grid (starting with 1,1 in LL corner)
@@ -108,7 +108,7 @@ implicit none
    real(dp)                                :: time        ! time
    real(dp)                 , allocatable  :: qsim(:)     ! runoff(hru) at one time step
    real(dp)                 , allocatable  :: qsim2D(:,:) ! runoff(hru) at one time step
-   integer(i4b)             , allocatable  :: hru_id(:)   ! id of hrus at which runoff is simulated
+   integer(i8b)             , allocatable  :: hru_id(:)   ! id of hrus at which runoff is simulated
  end type runoff
 
  ! ---------- reach parameters ----------------------------------------------------------------------------

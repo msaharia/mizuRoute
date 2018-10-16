@@ -66,7 +66,7 @@ contains
 
  ! local variables
  integer(i4b)                       :: iHRU             ! HRU array index
- integer(i4b)                       :: route_id(nHRU)   ! ID of routing layer
+ integer(i8b)                       :: route_id(nHRU)   ! ID of routing layer
  character(len=strLen)              :: cmessage         ! error message from subroutine
 
  ! initialize error control
@@ -145,21 +145,21 @@ contains
                                 ierr, message)  ! output: error control
  implicit none
  ! input variables
- character(*), intent(in)        :: fname           ! filename
+ character(*), intent(in)                      :: fname           ! filename
  ! output variables
- type(runoff), intent(out)       :: runoff_data     ! runoff for one time step for all HRUs
- integer(i4b), intent(out)       :: nSpatial(1:2)   ! number of spatial elements
- integer(i4b), intent(out)       :: nTime           ! number of time steps
- character(*), intent(out)       :: timeUnits       ! time units
- character(*), intent(out)       :: calendar        ! calendar
+ type(runoff), intent(out)                     :: runoff_data     ! runoff for one time step for all HRUs
+ integer(i4b), intent(out)                     :: nSpatial(1:2)   ! number of spatial elements
+ integer(i4b), intent(out)                     :: nTime           ! number of time steps
+ character(*), intent(out)                     :: timeUnits       ! time units
+ character(*), intent(out)                     :: calendar        ! calendar
  ! error control
- integer(i4b), intent(out)       :: ierr            ! error code
- character(*), intent(out)       :: message         ! error message
+ integer(i4b), intent(out)                     :: ierr            ! error code
+ character(*), intent(out)                     :: message         ! error message
  ! local variables
- integer(i4b)                    :: ncid            ! netcdf id
- integer(i4b)                    :: ivarID          ! variable id
- integer(i4b)                    :: nDims           ! number of dimension in runoff file
- character(len=strLen)           :: cmessage        ! error message from subroutine
+ integer(i4b)                                  :: ncid            ! netcdf id
+ integer(i4b)                                  :: ivarID          ! variable id
+ integer(i4b)                                  :: nDims           ! number of dimension in runoff file
+ character(len=strLen)                         :: cmessage        ! error message from subroutine
  ! initialize error control
  ierr=0; message='get_runoff_metadata/'
 
@@ -378,15 +378,15 @@ contains
  USE nr_utility_module, ONLY: indexx  ! get rank of data value
  implicit none
  ! input
- integer(i4b), intent(in)  :: qid(:)                       ! ID of input vector
- integer(i4b), intent(in)  :: qidMaster(:)                 ! ID of master vector
+ integer(i8b), intent(in)  :: qid(:)                       ! ID of input vector
+ integer(i8b), intent(in)  :: qidMaster(:)                 ! ID of master vector
  ! output
  integer(i4b), intent(out) :: qix(:)                       ! index within master vector
  integer(i4b), intent(out) :: ierr                         ! error code
  character(*), intent(out) :: message                      ! error message
  ! local
- integer(i4b)             :: rankID( size(qid) )           ! rank of input vector
- integer(i4b)             :: rankMaster( size(qidMaster) ) ! rank of master vector
+ integer(i8b)             :: rankID( size(qid) )           ! rank of input vector
+ integer(i8b)             :: rankMaster( size(qidMaster) ) ! rank of master vector
  integer(i4b)             :: ix,jx,ixMaster                ! array indices
  integer(i4b)             :: nx                            ! counter
  ! initialize error control
